@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digit in Cyberspace</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Orbitron:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="cyberGrid" aria-hidden="true"></canvas>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="glow-orbs" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+
+    <header class="top-nav">
+      <div class="brand-pill">CYBERCHASE // DIGIT NODE</div>
+      <div class="nav-actions">
+        <a
+          class="icon-btn x-btn"
+          href="https://x.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open X"
+          >X</a
+        >
+        <button id="muteToggle" class="icon-btn" aria-label="Toggle sound">
+          🔊
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="hero-panel">
+          <p class="eyebrow">MISSION PORTAL ONLINE</p>
+          <h1 class="neon-title">Welcome to Cyberspace</h1>
+          <p class="hero-copy">
+            Digit is your robotic guide through logic puzzles, cyber maps, and
+            glowing missions. Hover around and wake up the circuits!
+          </p>
+          <button class="cta-btn" id="launchMission">Launch Mission</button>
+        </div>
+
+        <div class="digit-stage" id="digitStage" tabindex="0" aria-label="Digit">
+          <div class="floating-ring ring-a"></div>
+          <div class="floating-ring ring-b"></div>
+          <div class="spark-layer" id="sparkLayer"></div>
+
+          <div id="digitCharacter" class="digit3d-wrap" role="img" aria-label="Digit 3D model">
+            <model-viewer
+              id="digitModel"
+              src="digit.glb"
+              alt="Digit 3D model"
+              camera-controls
+              disable-pan
+              disable-zoom
+              interaction-prompt="none"
+              shadow-intensity="0"
+              environment-image="neutral"
+              exposure="1.05"
+              autoplay
+            ></model-viewer>
+          </div>
+
+          <div class="speech-panel" id="speechBubble">
+            <p id="speechText">Beep boop! Ready for a cyber-adventure?</p>
+          </div>
+          <div class="mission-alert" id="missionAlert">NEW MISSION: Decode the Grid!</div>
+        </div>
+      </section>
+
+      <section class="section mission-section">
+        <h2>Mission Deck</h2>
+        <div class="card-grid">
+          <article class="mission-card" data-mission="Count the signal pulses">
+            <span class="card-icon">∑</span>
+            <h3>Signal Math</h3>
+            <p>Track patterns in glowing number streams and crack coded clues.</p>
+          </article>
+          <article class="mission-card" data-mission="Rotate the shape lock">
+            <span class="card-icon">⬡</span>
+            <h3>Shape Cipher</h3>
+            <p>Spin and match geometric locks to open digital pathways.</p>
+          </article>
+          <article class="mission-card" data-mission="Balance energy equations">
+            <span class="card-icon">π</span>
+            <h3>Power Puzzle</h3>
+            <p>Solve bright equation chambers using logic and quick thinking.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cyber-map-section">
+        <h2>Cyber Map</h2>
+        <div class="cyber-map" id="cyberMap">
+          <button class="zone zone-a" data-info="Logic Lagoon: Pattern puzzles ahead.">Logic Lagoon</button>
+          <button class="zone zone-b" data-info="Geometry Grove: Shape engines online.">Geometry Grove</button>
+          <button class="zone zone-c" data-info="Data Dunes: Number storms incoming.">Data Dunes</button>
+          <button class="zone zone-d" data-info="Code Crater: Hidden sequence vaults.">Code Crater</button>
+          <svg viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M120 80 C 230 90, 290 225, 400 225"></path>
+            <path d="M400 225 C 520 225, 560 95, 680 80"></path>
+            <path d="M400 225 C 540 290, 640 370, 780 370"></path>
+          </svg>
+          <div class="zone-info" id="zoneInfo">Hover a zone to reveal intel.</div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="hacker-alert" id="hackerAlert" aria-live="polite">
+      <p>⚠ HACKER ALERT: Distortion detected in Sector X!</p>
+    </aside>
+    <div class="alarm-overlay" id="alarmOverlay" aria-hidden="true"></div>
+    <div class="success-flash" id="successFlash" aria-hidden="true"></div>
+
+    <section class="puzzle-modal" id="puzzleModal" aria-live="polite">
+      <h3>Hacker Alert: Solve the puzzle!</h3>
+      <p id="puzzlePrompt">Loading puzzle...</p>
+      <input
+        id="puzzleInput"
+        class="puzzle-input"
+        type="text"
+        placeholder="Enter your answer"
+        autocomplete="off"
+      />
+      <button id="puzzleSubmit" class="puzzle-btn">Defend System</button>
+      <p id="puzzleStatus" class="puzzle-status"></p>
+    </section>
+
+    <div class="defense-toast" id="defenseToast">Attack successfully repelled</div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
